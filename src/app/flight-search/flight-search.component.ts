@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Component, OnInit, Optional } from '@angular/core';
-import { of } from 'rxjs';
+import { Component, OnDestroy, OnInit, Optional } from '@angular/core';
+import { of, Subscription, timer } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { Flight } from '../entities/flight';
 import { FlightService } from './flight.service';
 
@@ -22,7 +23,7 @@ import { FlightService } from './flight.service';
     }
   ] */
 })
-export class FlightSearchComponent implements OnInit {
+export class FlightSearchComponent implements OnInit, OnDestroy {
 
   from = 'Hamburg';
   to = 'Graz';
@@ -31,17 +32,21 @@ export class FlightSearchComponent implements OnInit {
   get flights() {
     return this.flightService.flights;
   }
+  subscription: Subscription;
 
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
+    // this.subscription = timer(0, 1000).subscribe(console.log);
   }
 
   search(): void {
     // console.log(`My first flight search from ${ this.from } to ${ this.to }...`);
     if (this.flightService) {
       this.flightService
-        .find(this.from, this.to)
+        .find(this.from, this.to).pipe(
+          take(1)
+        )
         .subscribe({
           // next: flights => this.flights = flights,
           error: err => console.error('My custom error', err)
@@ -51,5 +56,9 @@ export class FlightSearchComponent implements OnInit {
 
   select(flight: Flight): void {
     this.selectedFlight = flight;
+  }
+
+  ngOnDestroy(): void {
+    // this.subscription.unsubscribe();
   }
 }

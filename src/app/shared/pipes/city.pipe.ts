@@ -1,11 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Pipe({
   name: 'city'
 })
 export class CityPipe implements PipeTransform {
 
-  transform(value: string, format: string): string {
+  transform(value: string, format: string): Observable<string> {
     let short: string;
     let long: string;
 
@@ -27,9 +29,9 @@ export class CityPipe implements PipeTransform {
     }
 
     if (format === 'short') {
-      return short;
+      return of(short).pipe(delay(3000));
     }
 
-    return long;
+    return of(long);
   }
 }
