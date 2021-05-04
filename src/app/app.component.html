@@ -8,9 +8,11 @@
       <navbar-cmp></navbar-cmp>
 
       <div class="content">
-
+          <button (click)="showChild = !showChild" class="btn btn-default">
+            Toggle Child Component
+          </button>
           <!-- <h1>{{title}}</h1> -->
-          <app-flight-search></app-flight-search>
+          <app-flight-search *ngIf="showChild"></app-flight-search>
 
       </div>
   </div>

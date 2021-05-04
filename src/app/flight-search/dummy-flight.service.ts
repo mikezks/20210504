@@ -4,7 +4,7 @@ import { Flight } from '../entities/flight';
 
 @Injectable()
 export class DummyFlightService {
-
+  flights: Flight[] = [];
   find(from: string, to: string): Observable<Flight[]> {
     return of([
       { id: 999, from: 'Madrid', to: 'Rome', date: '', delayed: true }

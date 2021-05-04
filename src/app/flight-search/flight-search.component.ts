@@ -26,10 +26,13 @@ export class FlightSearchComponent implements OnInit {
 
   from = 'Hamburg';
   to = 'Graz';
-  flights: Array<Flight> = [];
+  //flights: Array<Flight> = [];
   selectedFlight: Flight;
+  get flights() {
+    return this.flightService.flights;
+  }
 
-  constructor(@Optional() private flightService: FlightService) { }
+  constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
   }
@@ -40,7 +43,7 @@ export class FlightSearchComponent implements OnInit {
       this.flightService
         .find(this.from, this.to)
         .subscribe({
-          next: flights => this.flights = flights,
+          // next: flights => this.flights = flights,
           error: err => console.error('My custom error', err)
         });
     }
