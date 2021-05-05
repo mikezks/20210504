@@ -21,7 +21,7 @@ export class DefaultFlightService {
       .set('Accept', 'application/json');
 
     return this.http.get<Flight[]>(url, { params, headers}).pipe(
-      tap(flights => this.flights = flights)
+      tap(flights => to && (this.flights = flights))
     );
   }
 }
