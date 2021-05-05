@@ -9,7 +9,8 @@
       <form #searchForm="ngForm">
           <div class="form-group">
               <label>From:</label>
-              <input name="from" [(ngModel)]="from" class="form-control" required minlength="3">
+              <input name="from" [(ngModel)]="from" class="form-control"
+                required minlength="3" [city]="['Hamburg','London']">
           </div>
           <div class="alert alert-danger"
             *ngIf="searchForm?.controls.from?.invalid">
@@ -23,10 +24,16 @@
             *ngIf="searchForm?.controls.from?.hasError('minlength')">
             Enter at least 3 chars!
           </div>
+          <div class="alert alert-danger"
+            *ngIf="searchForm?.controls.from?.hasError('city')">
+            City name "{{ searchForm?.controls.from?.errors.city.currentCity }}" is not allowed!<br>
+            Allowed cities: {{ searchForm?.controls.from?.errors.city.allowedCities }}
+          </div>
 
           <div class="form-group">
               <label>To:</label>
-              <input name="to" [(ngModel)]="to" class="form-control" required minlength="3">
+              <input name="to" [(ngModel)]="to" class="form-control"
+                required minlength="3" [city]="['Graz','Berlin']">
           </div>
           <div class="alert alert-danger"
             *ngIf="searchForm?.controls.to?.invalid">
@@ -39,6 +46,11 @@
           <div class="alert alert-danger"
             *ngIf="searchForm?.controls.to?.hasError('minlength')">
             Enter at least 3 chars!
+          </div>
+          <div class="alert alert-danger"
+            *ngIf="searchForm?.controls.to?.hasError('city')">
+            City name "{{ searchForm?.controls.to?.errors.city.currentCity }}" is not allowed!<br>
+            Allowed cities: {{ searchForm?.controls.to?.errors.city.allowedCities }}
           </div>
 
           <div class="form-group">
