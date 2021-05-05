@@ -29,7 +29,7 @@ export class CityPipe implements PipeTransform {
     }
 
     if (format === 'short') {
-      return of(short).pipe(delay(3000));
+      return of(short).pipe(/* delay(3000) */);
     }
 
     return of(long);
