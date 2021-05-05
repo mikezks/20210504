@@ -4,13 +4,15 @@ import { CityPipe } from './pipes/city.pipe';
 import { FormsModule } from '@angular/forms';
 import { AsyncCityPipe } from './pipes/async-city.pipe';
 import { CityValidatorDirective } from './validation/city-validator.directive';
+import { AsyncCityValidatorDirective } from './validation/async-city-validator.directive';
 
 
 @NgModule({
   declarations: [
     CityPipe,
     AsyncCityPipe,
-    CityValidatorDirective
+    CityValidatorDirective,
+    AsyncCityValidatorDirective
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { CityValidatorDirective } from './validation/city-validator.directive';
     AsyncCityPipe,
     CityPipe,
     FormsModule,
-    CityValidatorDirective
+    CityValidatorDirective,
+    AsyncCityValidatorDirective
   ]
 })
 export class SharedModule { }

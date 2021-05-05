@@ -10,7 +10,11 @@
           <div class="form-group">
               <label>From:</label>
               <input name="from" [(ngModel)]="from" class="form-control"
-                required minlength="3" [city]="['Hamburg','London']">
+                required minlength="3" [city]="['Hamburg','London']" asyncCity>
+          </div>
+          <div class="alert alert-info"
+            *ngIf="searchForm?.controls.from?.pending">
+            Async validation is ongoing...
           </div>
           <div class="alert alert-danger"
             *ngIf="searchForm?.controls.from?.invalid">
@@ -29,11 +33,19 @@
             City name "{{ searchForm?.controls.from?.errors.city.currentCity }}" is not allowed!<br>
             Allowed cities: {{ searchForm?.controls.from?.errors.city.allowedCities }}
           </div>
+          <div class="alert alert-danger"
+            *ngIf="searchForm?.controls.from?.hasError('asyncCity')">
+            Async City found an error!
+          </div>
 
           <div class="form-group">
               <label>To:</label>
               <input name="to" [(ngModel)]="to" class="form-control"
-                required minlength="3" [city]="['Graz','Berlin']">
+                required minlength="3" [city]="['Graz','Berlin', 'London']" asyncCity>
+          </div>
+          <div class="alert alert-info"
+            *ngIf="searchForm?.controls.to?.pending">
+            Async validation is ongoing...
           </div>
           <div class="alert alert-danger"
             *ngIf="searchForm?.controls.to?.invalid">
@@ -51,6 +63,10 @@
             *ngIf="searchForm?.controls.to?.hasError('city')">
             City name "{{ searchForm?.controls.to?.errors.city.currentCity }}" is not allowed!<br>
             Allowed cities: {{ searchForm?.controls.to?.errors.city.allowedCities }}
+          </div>
+          <div class="alert alert-danger"
+            *ngIf="searchForm?.controls.to?.hasError('asyncCity')">
+            Async City found an error!
           </div>
 
           <div class="form-group">
