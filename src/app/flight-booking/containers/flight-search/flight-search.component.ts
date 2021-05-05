@@ -37,6 +37,21 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
     5: true
   };
 
+  /* const dynForms = {
+    formName: 'Personal data',
+    fields: [
+      {
+        name: 'firstname',
+        label: 'Firstname',
+        type: 'textfield',
+        validator: [
+          'required',
+          'custom-person-validator'
+        ]
+      }
+    ]
+  }; */
+
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
