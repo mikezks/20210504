@@ -32,6 +32,10 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
     return this.flightService.flights;
   }
   subscription: Subscription;
+  basket: Record<number, boolean> = {
+    3: true,
+    5: true
+  };
 
   constructor(private flightService: FlightService) { }
 
