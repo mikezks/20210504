@@ -1,6 +1,5 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Component, OnDestroy, OnInit, Optional } from '@angular/core';
-import { of, Subscription, timer } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Flight } from '../../../entities/flight';
 import { FlightService } from '../../services/flight.service';
@@ -8,7 +7,7 @@ import { FlightService } from '../../services/flight.service';
 @Component({
   selector: 'app-flight-search',
   templateUrl: './flight-search.component.html',
-  styleUrls: ['./flight-search.component.css'],
+  styleUrls: ['./flight-search.component.css']
   /* providers: [
     {
       provide: FlightService,
