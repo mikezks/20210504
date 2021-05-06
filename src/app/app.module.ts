@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FlightBookingModule } from './flight-booking/flight-booking.module';
 import { CoreModule } from './core/core.module';
+import { defaultSort, SORT } from './shared/sorting/default-sort';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { CoreModule } from './core/core.module';
    declarations: [
       AppComponent
    ],
-   providers: [],
+   providers: [
+     { provide: SORT, useValue: defaultSort }
+   ],
    bootstrap: [
       AppComponent
    ]

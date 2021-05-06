@@ -1,13 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, SkipSelf } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { defaultSort, SORT, SortFn } from '../../../shared/sorting/default-sort';
 import { Flight } from '../../../entities/flight';
 import { FlightService } from '../../services/flight.service';
 
 @Component({
   selector: 'app-flight-search',
   templateUrl: './flight-search.component.html',
-  styleUrls: ['./flight-search.component.css']
+  styleUrls: ['./flight-search.component.css'],
+  providers: [
+    { provide: SORT, useValue: (a, b) => 0 }
+  ]
   /* providers: [
     {
       provide: FlightService,
@@ -52,10 +56,16 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
     ]
   }; */
 
-  constructor(private flightService: FlightService) { }
+  constructor(
+    private flightService: FlightService,
+    @Inject(SORT) private sortFn: SortFn) { }
 
   ngOnInit(): void {
     // this.subscription = timer(0, 1000).subscribe(console.log);
+  }
+
+  sort(): void {
+    this.flights.sort(this.sortFn);
   }
 
   search(): void {
