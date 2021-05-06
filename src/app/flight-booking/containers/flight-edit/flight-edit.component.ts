@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import { validateCity } from '../../../shared/validation/validate-city';
 
 @Component({
   selector: 'app-flight-edit',
@@ -18,11 +19,13 @@ export class FlightEditComponent implements OnInit {
       id: [0],
       from: ['Amsterdam', [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        validateCity
       ]],
       to: ['Madrid', [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        validateCity
       ]],
       date: [new Date()]
     });
