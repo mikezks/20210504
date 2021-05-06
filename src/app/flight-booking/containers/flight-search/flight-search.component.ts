@@ -69,6 +69,10 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
   }
 
   search(): void {
+    if (!this.from || !this.to) {
+      return;
+    }
+
     // console.log(`My first flight search from ${ this.from } to ${ this.to }...`);
     if (this.flightService) {
       this.flightService
