@@ -5,7 +5,7 @@ import { FlightSearchComponent } from './containers/flight-search/flight-search.
 
 const routes: Routes = [
   {
-    path: 'flight-booking',
+    path: '',
     children: [
       {
         path: '',

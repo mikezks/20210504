@@ -7,7 +7,6 @@ import { CoreModule } from './core/core.module';
 import { defaultSort, SORT } from './shared/sorting/default-sort';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
-import { FlightBookingModule } from './flight-booking/flight-booking.module';
 
 
 @NgModule({
@@ -16,7 +15,7 @@ import { FlightBookingModule } from './flight-booking/flight-booking.module';
       HttpClientModule,
       RouterModule.forRoot(APP_ROUTES),
       CoreModule,
-      FlightBookingModule
+      // FlightBookingModule // -> necessary for Lazy Loading
    ],
    declarations: [
       AppComponent
