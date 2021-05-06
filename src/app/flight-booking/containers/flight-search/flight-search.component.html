@@ -6,35 +6,35 @@
 
   <div class="content">
 
-      <form #searchForm="ngForm">
+      <form #editForm="ngForm">
           <div class="form-group">
               <label>From:</label>
               <input name="from" [(ngModel)]="from" class="form-control"
                 required minlength="3" [city]="['Hamburg','London']" asyncCity>
           </div>
           <div class="alert alert-info"
-            *ngIf="searchForm?.controls.from?.pending">
+            *ngIf="editForm?.controls.from?.pending">
             Async validation is ongoing...
           </div>
           <div class="alert alert-danger"
-            *ngIf="searchForm?.controls.from?.invalid">
+            *ngIf="editForm?.controls.from?.invalid">
             Error occurred!
           </div>
           <div class="alert alert-danger"
-            *ngIf="searchForm?.controls.from?.hasError('required')">
+            *ngIf="editForm?.controls.from?.hasError('required')">
             This is a mandatory field!
           </div>
           <div class="alert alert-danger"
-            *ngIf="searchForm?.controls.from?.hasError('minlength')">
+            *ngIf="editForm?.controls.from?.hasError('minlength')">
             Enter at least 3 chars!
           </div>
           <div class="alert alert-danger"
-            *ngIf="searchForm?.controls.from?.hasError('city')">
-            City name "{{ searchForm?.controls.from?.errors.city.currentCity }}" is not allowed!<br>
-            Allowed cities: {{ searchForm?.controls.from?.errors.city.allowedCities }}
+            *ngIf="editForm?.controls.from?.hasError('city')">
+            City name "{{ editForm?.controls.from?.errors.city.currentCity }}" is not allowed!<br>
+            Allowed cities: {{ editForm?.controls.from?.errors.city.allowedCities }}
           </div>
           <div class="alert alert-danger"
-            *ngIf="searchForm?.controls.from?.hasError('asyncCity')">
+            *ngIf="editForm?.controls.from?.hasError('asyncCity')">
             Async City found an error!
           </div>
 
@@ -44,34 +44,34 @@
                 required minlength="3" [city]="['Graz','Berlin', 'London']" asyncCity>
           </div>
           <div class="alert alert-info"
-            *ngIf="searchForm?.controls.to?.pending">
+            *ngIf="editForm?.controls.to?.pending">
             Async validation is ongoing...
           </div>
           <div class="alert alert-danger"
-            *ngIf="searchForm?.controls.to?.invalid">
+            *ngIf="editForm?.controls.to?.invalid">
             Error occurred!
           </div>
           <div class="alert alert-danger"
-            *ngIf="searchForm?.controls.to?.hasError('required')">
+            *ngIf="editForm?.controls.to?.hasError('required')">
             This is a mandatory field!
           </div>
           <div class="alert alert-danger"
-            *ngIf="searchForm?.controls.to?.hasError('minlength')">
+            *ngIf="editForm?.controls.to?.hasError('minlength')">
             Enter at least 3 chars!
           </div>
           <div class="alert alert-danger"
-            *ngIf="searchForm?.controls.to?.hasError('city')">
-            City name "{{ searchForm?.controls.to?.errors.city.currentCity }}" is not allowed!<br>
-            Allowed cities: {{ searchForm?.controls.to?.errors.city.allowedCities }}
+            *ngIf="editForm?.controls.to?.hasError('city')">
+            City name "{{ editForm?.controls.to?.errors.city.currentCity }}" is not allowed!<br>
+            Allowed cities: {{ editForm?.controls.to?.errors.city.allowedCities }}
           </div>
           <div class="alert alert-danger"
-            *ngIf="searchForm?.controls.to?.hasError('asyncCity')">
+            *ngIf="editForm?.controls.to?.hasError('asyncCity')">
             Async City found an error!
           </div>
 
           <div class="form-group">
           <button
-              [disabled]="!searchForm?.valid"
+              [disabled]="!editForm?.valid"
               (click)="search()"
               class="btn btn-default">Search</button>
           </div>

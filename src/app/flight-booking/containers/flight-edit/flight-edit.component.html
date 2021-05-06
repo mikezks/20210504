@@ -1,1 +1,86 @@
-<p>flight-edit works!</p>
+<div class="card">
+
+  <div class="header">
+      <h2 class="title">Flight Edit</h2>
+  </div>
+
+  <div class="content">
+
+    <form [formGroup]="editForm">
+      <div class="form-group">
+          <label>Id:</label>
+          <input formControlName="id" class="form-control">
+      </div>
+
+      <div class="form-group">
+          <label>From:</label>
+          <input formControlName="from" class="form-control">
+      </div>
+      <div class="alert alert-info"
+        *ngIf="editForm.controls.from.pending">
+        Async validation is ongoing...
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="editForm.controls.from.invalid">
+        Error occurred!
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="editForm.controls.from.hasError('required')">
+        This is a mandatory field!
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="editForm.controls.from.hasError('minlength')">
+        Enter at least 3 chars!
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="editForm.controls.from.hasError('city')">
+        City name "{{ editForm?.controls.from?.errors.city.currentCity }}" is not allowed!<br>
+        Allowed cities: {{ editForm?.controls.from?.errors.city.allowedCities }}
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="editForm.controls.from.hasError('asyncCity')">
+        Async City found an error!
+      </div>
+
+      <div class="form-group">
+          <label>To:</label>
+          <input formControlName="to" class="form-control">
+      </div>
+      <div class="alert alert-info"
+        *ngIf="editForm.controls.to.pending">
+        Async validation is ongoing...
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="editForm.controls.to.invalid">
+        Error occurred!
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="editForm.controls.to.hasError('required')">
+        This is a mandatory field!
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="editForm.controls.to.hasError('minlength')">
+        Enter at least 3 chars!
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="editForm.controls.to.hasError('city')">
+        City name "{{ editForm?.controls.to?.errors.city.currentCity }}" is not allowed!<br>
+        Allowed cities: {{ editForm?.controls.to?.errors.city.allowedCities }}
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="editForm.controls.to.hasError('asyncCity')">
+        Async City found an error!
+      </div>
+
+      <div class="form-group">
+        <label>Date:</label>
+        <input formControlName="date" class="form-control">
+      </div>
+
+      <div class="form-group">
+          <button (click)="save()" class="btn btn-default">Save</button>
+      </div>
+    </form>
+
+  </div>
+</div>
