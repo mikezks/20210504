@@ -5,6 +5,7 @@
   </div>
 
   <div class="content">
+    <p>Details: {{ this.showDetails }}</p>
 
     <form [formGroup]="editForm">
       <div class="form-group">
@@ -79,6 +80,16 @@
 
       <div class="form-group">
           <button (click)="save()" class="btn btn-default">Save</button>
+          <button
+            [routerLink]="['/flight-booking/flight-edit', (this.id - 1)]"
+            class="btn btn-default">
+            Previous Flight
+          </button>
+          <button
+            [routerLink]="['/flight-booking/flight-edit', (this.id + 1)]"
+            class="btn btn-default">
+            Next Flight
+          </button>
       </div>
     </form>
 

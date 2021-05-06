@@ -22,7 +22,7 @@ export class AsyncCityValidatorDirective implements AsyncValidator {
         map(flights => flights.length > 0 ? null : {
           asyncCity: true
         }),
-        delay(5000)
+        delay(1000)
       );
   }
 }
