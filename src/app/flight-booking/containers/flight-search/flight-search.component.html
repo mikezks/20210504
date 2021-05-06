@@ -10,7 +10,7 @@
           <div class="form-group">
               <label>From:</label>
               <input name="from" [(ngModel)]="from" class="form-control"
-                required minlength="3" [city]="['Hamburg','London']" asyncCity>
+                required minlength="3" [city]="['Graz', 'Hamburg','London']" asyncCity>
           </div>
           <div class="alert alert-info"
             *ngIf="editForm?.controls.from?.pending">
@@ -41,7 +41,7 @@
           <div class="form-group">
               <label>To:</label>
               <input name="to" [(ngModel)]="to" class="form-control"
-                required minlength="3" [city]="['Graz','Berlin', 'London']" asyncCity>
+                required minlength="3" [city]="['Graz', 'Hamburg', 'Berlin', 'London']" asyncCity>
           </div>
           <div class="alert alert-info"
             *ngIf="editForm?.controls.to?.pending">
